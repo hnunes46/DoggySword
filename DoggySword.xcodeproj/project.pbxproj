@@ -14,6 +14,10 @@
 		4BB1BDEE2B63F1A0007E05A5 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDED2B63F1A0007E05A5 /* ListView.swift */; };
 		4BB1BDF02B63F1AA007E05A5 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDEF2B63F1AA007E05A5 /* SearchView.swift */; };
 		4BB1BDF22B63F25D007E05A5 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDF12B63F25D007E05A5 /* TabBar.swift */; };
+		4BB1BDF62B63FB78007E05A5 /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDF52B63FB78007E05A5 /* HttpManager.swift */; };
+		4BB1BDF92B641D89007E05A5 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDF82B641D89007E05A5 /* Dog.swift */; };
+		4BB1BDFC2B64448F007E05A5 /* URL+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDFB2B64448F007E05A5 /* URL+Ext.swift */; };
+		4BB1BDFF2B644560007E05A5 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDFE2B644560007E05A5 /* Routes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,10 @@
 		4BB1BDED2B63F1A0007E05A5 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		4BB1BDEF2B63F1AA007E05A5 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		4BB1BDF12B63F25D007E05A5 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		4BB1BDF52B63FB78007E05A5 /* HttpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
+		4BB1BDF82B641D89007E05A5 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
+		4BB1BDFB2B64448F007E05A5 /* URL+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Ext.swift"; sourceTree = "<group>"; };
+		4BB1BDFE2B644560007E05A5 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +65,10 @@
 		4BB1BDDB2B63F0A6007E05A5 /* DoggySword */ = {
 			isa = PBXGroup;
 			children = (
+				4BB1BDFA2B644478007E05A5 /* Extensions */,
+				4BB1BDFD2B64454A007E05A5 /* Routes */,
+				4BB1BDF32B63FB15007E05A5 /* Managers */,
+				4BB1BDF72B641D45007E05A5 /* Models */,
 				4BB1BDEC2B63F186007E05A5 /* Views */,
 				4BB1BDEA2B63F175007E05A5 /* Components */,
 				4BB1BDDC2B63F0A6007E05A5 /* DoggySwordApp.swift */,
@@ -98,6 +110,46 @@
 				4BB1BDEF2B63F1AA007E05A5 /* SearchView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4BB1BDF32B63FB15007E05A5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4BB1BDF42B63FB1F007E05A5 /* Http */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		4BB1BDF42B63FB1F007E05A5 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				4BB1BDF52B63FB78007E05A5 /* HttpManager.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		4BB1BDF72B641D45007E05A5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4BB1BDF82B641D89007E05A5 /* Dog.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4BB1BDFA2B644478007E05A5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4BB1BDFB2B64448F007E05A5 /* URL+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4BB1BDFD2B64454A007E05A5 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				4BB1BDFE2B644560007E05A5 /* Routes.swift */,
+			);
+			path = Routes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,10 +223,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BB1BDF02B63F1AA007E05A5 /* SearchView.swift in Sources */,
+				4BB1BDF92B641D89007E05A5 /* Dog.swift in Sources */,
 				4BB1BDDF2B63F0A6007E05A5 /* ContentView.swift in Sources */,
 				4BB1BDDD2B63F0A6007E05A5 /* DoggySwordApp.swift in Sources */,
+				4BB1BDFF2B644560007E05A5 /* Routes.swift in Sources */,
+				4BB1BDF62B63FB78007E05A5 /* HttpManager.swift in Sources */,
 				4BB1BDEE2B63F1A0007E05A5 /* ListView.swift in Sources */,
 				4BB1BDF22B63F25D007E05A5 /* TabBar.swift in Sources */,
+				4BB1BDFC2B64448F007E05A5 /* URL+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
