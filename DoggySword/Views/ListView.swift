@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ListView.swift
 //  DoggySword
 //
 //  Created by Helder Nunes on 26/01/2024.
@@ -7,14 +7,12 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    
+struct ListView: View {
     var body: some View {
-
-        TabBar()
+        Text("List View")
     }
 }
 
 #Preview {
-    ContentView()
+    ListView()
 }
