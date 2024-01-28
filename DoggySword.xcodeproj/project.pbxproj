@@ -18,6 +18,7 @@
 		4BB1BDF92B641D89007E05A5 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDF82B641D89007E05A5 /* Dog.swift */; };
 		4BB1BDFC2B64448F007E05A5 /* URL+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDFB2B64448F007E05A5 /* URL+Ext.swift */; };
 		4BB1BDFF2B644560007E05A5 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDFE2B644560007E05A5 /* Routes.swift */; };
+		4BB1BE012B66B2EE007E05A5 /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BE002B66B2EE007E05A5 /* Breed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		4BB1BDF82B641D89007E05A5 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		4BB1BDFB2B64448F007E05A5 /* URL+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Ext.swift"; sourceTree = "<group>"; };
 		4BB1BDFE2B644560007E05A5 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		4BB1BE002B66B2EE007E05A5 /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				4BB1BDF82B641D89007E05A5 /* Dog.swift */,
+				4BB1BE002B66B2EE007E05A5 /* Breed.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				4BB1BDF62B63FB78007E05A5 /* HttpManager.swift in Sources */,
 				4BB1BDEE2B63F1A0007E05A5 /* ListView.swift in Sources */,
 				4BB1BDF22B63F25D007E05A5 /* TabBar.swift in Sources */,
+				4BB1BE012B66B2EE007E05A5 /* Breed.swift in Sources */,
 				4BB1BDFC2B64448F007E05A5 /* URL+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

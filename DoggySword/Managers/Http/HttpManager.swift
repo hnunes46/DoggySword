@@ -45,7 +45,7 @@ enum HttpMethod {
 struct Resource<T: Codable> {
 
     let url: URL
-    var headers: [String: String] = ["API-KEY": "KEY"]
+    var headers: [String: String] = ["x-api-key": "live_cvkdFFvfmACE3tKIv1ydA1ZYTOWNhKJnp04NNfqs6AalUpyQIwjg1BqwHHclPWUU"]
     var method: HttpMethod = .get([])
 }
 

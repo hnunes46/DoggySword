@@ -11,4 +11,8 @@ struct Dog: Codable, Hashable, Identifiable {
 
     let id: String
     let url: URL
+    let width: CGFloat?
+    let height: CGFloat?
+
+    let breeds: [Breed]
 }
