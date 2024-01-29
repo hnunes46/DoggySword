@@ -26,9 +26,7 @@ struct ListNavigationView: View {
                     switch route {
 
                     case let .detail(item):
-                        VStack {
-                            Text("\(item.id)")
-                        }
+                        DetailView(item: item)
                     }
                 }
         }

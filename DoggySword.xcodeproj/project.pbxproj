@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4B50AA192B66D05D0023BFEE /* DynamicGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B50AA182B66D05D0023BFEE /* DynamicGrid.swift */; };
 		4B50AA1D2B67BCF00023BFEE /* ListNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B50AA1C2B67BCF00023BFEE /* ListNavigationView.swift */; };
+		4B50AA202B67C0800023BFEE /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B50AA1F2B67C0800023BFEE /* DetailView.swift */; };
 		4BB1BDDD2B63F0A6007E05A5 /* DoggySwordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDDC2B63F0A6007E05A5 /* DoggySwordApp.swift */; };
 		4BB1BDDF2B63F0A6007E05A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDDE2B63F0A6007E05A5 /* ContentView.swift */; };
 		4BB1BDE12B63F0A9007E05A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BB1BDE02B63F0A9007E05A5 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		4B50AA182B66D05D0023BFEE /* DynamicGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGrid.swift; sourceTree = "<group>"; };
 		4B50AA1C2B67BCF00023BFEE /* ListNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNavigationView.swift; sourceTree = "<group>"; };
+		4B50AA1F2B67C0800023BFEE /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		4BB1BDD92B63F0A6007E05A5 /* DoggySword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoggySword.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB1BDDC2B63F0A6007E05A5 /* DoggySwordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoggySwordApp.swift; sourceTree = "<group>"; };
 		4BB1BDDE2B63F0A6007E05A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 		4B50AA1E2B67C0050023BFEE /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				4B50AA1F2B67C0800023BFEE /* DetailView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B50AA202B67C0800023BFEE /* DetailView.swift in Sources */,
 				4BB1BDF02B63F1AA007E05A5 /* SearchView.swift in Sources */,
 				4BB1BDF92B641D89007E05A5 /* Dog.swift in Sources */,
 				4B50AA192B66D05D0023BFEE /* DynamicGrid.swift in Sources */,
