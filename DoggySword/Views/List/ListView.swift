@@ -10,21 +10,24 @@ import SwiftUI
 struct ListView: View {
 
     let httpManager: HttpManager = HttpManager()
+
+    @Binding var path: NavigationPath
+
     @State private var imageItems: [Dog] = [Dog]()
     @State private var columns: [GridItem] = [GridItem(.fixed(UIScreen.main.bounds.width - 16))]
     @State private var numberOfColumns = 2
     @State private var columnWidth = UIScreen.main.bounds.width - 16
     @State private var page: Int = 0
     var body: some View {
-    
-        NavigationStack {
-            
-            ScrollView {
 
-//                DynamicGrid(gridItems: self.gridItems, numOfColumns: 2, spacing: 4)
-                LazyVGrid(columns: self.columns, spacing: 4) {
+        ScrollView {
 
-                    ForEach (self.imageItems) { item in
+            //                DynamicGrid(gridItems: self.gridItems, numOfColumns: 2, spacing: 4)
+            LazyVGrid(columns: self.columns, spacing: 4) {
+
+                ForEach (self.imageItems) { item in
+
+                    NavigationLink(value: ListNavigationRoutes.detail(item: item)) {
 
                         AsyncImage(url: item.url) { image in
 
@@ -43,37 +46,37 @@ struct ListView: View {
                         .frame(height: 300)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .task {
-                            
+
                             self.isLastElement(item: item)
                         }
                     }
                 }
-                .padding(.horizontal, 8)
-
             }
-            .navigationTitle("Explorer")
-            .toolbar{
+            .padding(.horizontal, 8)
 
-                Button("View") {
+        }
+        .navigationTitle("Explorer")
+        .toolbar{
 
-                    if numberOfColumns == 2 {
+            Button("View") {
 
-                        self.numberOfColumns = 1
-                        self.columnWidth = UIScreen.main.bounds.width - 16
-                        self.columns = [GridItem(.fixed(self.columnWidth))]
+                if numberOfColumns == 2 {
 
-                    } else {
+                    self.numberOfColumns = 1
+                    self.columnWidth = UIScreen.main.bounds.width - 16
+                    self.columns = [GridItem(.fixed(self.columnWidth))]
 
-                        self.numberOfColumns = 2
-                        self.columnWidth = (UIScreen.main.bounds.width - 16) / 2 - 4
-                        self.columns = [GridItem(.fixed(self.columnWidth)), GridItem(.fixed(self.columnWidth))]
-                    }
+                } else {
+
+                    self.numberOfColumns = 2
+                    self.columnWidth = (UIScreen.main.bounds.width - 16) / 2 - 4
+                    self.columns = [GridItem(.fixed(self.columnWidth)), GridItem(.fixed(self.columnWidth))]
                 }
             }
-            .onAppear {
+        }
+        .onAppear {
 
-                self.fetch()
-            }
+            self.fetch()
         }
     }
 
@@ -110,5 +113,5 @@ struct ListView: View {
 }
 
 #Preview {
-    ListView()
+    ListView(path: .constant(NavigationPath()))
 }

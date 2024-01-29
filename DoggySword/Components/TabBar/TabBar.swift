@@ -13,7 +13,7 @@ struct TabBar: View {
 
         TabView {
 
-            ListView()
+            ListNavigationView()
                 .tabItem { Label("Dogs", systemImage: "pawprint.fill") }
 
             SearchView()

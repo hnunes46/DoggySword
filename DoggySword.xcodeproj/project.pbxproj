@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B50AA192B66D05D0023BFEE /* DynamicGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B50AA182B66D05D0023BFEE /* DynamicGrid.swift */; };
+		4B50AA1D2B67BCF00023BFEE /* ListNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B50AA1C2B67BCF00023BFEE /* ListNavigationView.swift */; };
 		4BB1BDDD2B63F0A6007E05A5 /* DoggySwordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDDC2B63F0A6007E05A5 /* DoggySwordApp.swift */; };
 		4BB1BDDF2B63F0A6007E05A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1BDDE2B63F0A6007E05A5 /* ContentView.swift */; };
 		4BB1BDE12B63F0A9007E05A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BB1BDE02B63F0A9007E05A5 /* Assets.xcassets */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B50AA182B66D05D0023BFEE /* DynamicGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGrid.swift; sourceTree = "<group>"; };
+		4B50AA1C2B67BCF00023BFEE /* ListNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNavigationView.swift; sourceTree = "<group>"; };
 		4BB1BDD92B63F0A6007E05A5 /* DoggySword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoggySword.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB1BDDC2B63F0A6007E05A5 /* DoggySwordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoggySwordApp.swift; sourceTree = "<group>"; };
 		4BB1BDDE2B63F0A6007E05A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +52,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B50AA1A2B67BCCA0023BFEE /* List */ = {
+			isa = PBXGroup;
+			children = (
+				4BB1BDED2B63F1A0007E05A5 /* ListView.swift */,
+				4B50AA1C2B67BCF00023BFEE /* ListNavigationView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		4B50AA1B2B67BCD20023BFEE /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				4BB1BDEF2B63F1AA007E05A5 /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		4B50AA1E2B67C0050023BFEE /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		4BB1BDD02B63F0A6007E05A5 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				4BB1BDEB2B63F17C007E05A5 /* TabBar */,
+				4B50AA182B66D05D0023BFEE /* DynamicGrid.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -108,8 +137,9 @@
 		4BB1BDEC2B63F186007E05A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4BB1BDED2B63F1A0007E05A5 /* ListView.swift */,
-				4BB1BDEF2B63F1AA007E05A5 /* SearchView.swift */,
+				4B50AA1E2B67C0050023BFEE /* Detail */,
+				4B50AA1A2B67BCCA0023BFEE /* List */,
+				4B50AA1B2B67BCD20023BFEE /* Search */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,9 +257,11 @@
 			files = (
 				4BB1BDF02B63F1AA007E05A5 /* SearchView.swift in Sources */,
 				4BB1BDF92B641D89007E05A5 /* Dog.swift in Sources */,
+				4B50AA192B66D05D0023BFEE /* DynamicGrid.swift in Sources */,
 				4BB1BDDF2B63F0A6007E05A5 /* ContentView.swift in Sources */,
 				4BB1BDDD2B63F0A6007E05A5 /* DoggySwordApp.swift in Sources */,
 				4BB1BDFF2B644560007E05A5 /* Routes.swift in Sources */,
+				4B50AA1D2B67BCF00023BFEE /* ListNavigationView.swift in Sources */,
 				4BB1BDF62B63FB78007E05A5 /* HttpManager.swift in Sources */,
 				4BB1BDEE2B63F1A0007E05A5 /* ListView.swift in Sources */,
 				4BB1BDF22B63F25D007E05A5 /* TabBar.swift in Sources */,
