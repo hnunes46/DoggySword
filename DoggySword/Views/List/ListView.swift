@@ -15,7 +15,7 @@ struct ListView: View {
 
     @State private var imageItems: [Dog] = [Dog]()
     @State private var columns: [GridItem] = [GridItem(.fixed(UIScreen.main.bounds.width - 16))]
-    @State private var numberOfColumns = 2
+    @State private var numberOfColumns = 1
     @State private var columnWidth = UIScreen.main.bounds.width - 16
     @State private var page: Int = 0
     
@@ -70,7 +70,7 @@ struct ListView: View {
                 } else {
 
                     self.numberOfColumns = 2
-                    self.columnWidth = (UIScreen.main.bounds.width - 16) / 2 - 4
+                    self.columnWidth = ((UIScreen.main.bounds.width - 16) / 2) - 4
                     self.columns = [GridItem(.fixed(self.columnWidth)), GridItem(.fixed(self.columnWidth))]
                 }
             }
