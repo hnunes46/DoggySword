@@ -14,8 +14,8 @@ struct Breed: Codable, Hashable, Identifiable {
     let bredFor: String?
     let breedGroup: String?
     let lifeSpan: String
-    let temperement: String?
-    let referenceImageId: String
+    let temperament: String?
+    let referenceImageId: String?
     let origin: String?
     let countryCode: String?
 
@@ -45,54 +45,14 @@ struct Breed: Codable, Hashable, Identifiable {
         self.id = try values.decode(Int.self, forKey: .id)
         self.name = try values.decode(String.self, forKey: .name)
         self.lifeSpan = try values.decode(String.self, forKey: .lifeSpan)
-        self.referenceImageId = try values.decode(String.self, forKey: .referenceImageId)
+        self.referenceImageId = try values.decodeIfPresent(String.self, forKey: .referenceImageId)
+        self.breedGroup = try values.decodeIfPresent(String.self, forKey: .breedGroup)
+        self.bredFor = try values.decodeIfPresent(String.self, forKey: .bredFor)
+        self.temperament = try values.decodeIfPresent(String.self, forKey: .temperament)
+        self.countryCode = try values.decodeIfPresent(String.self, forKey: .countryCode)
+        self.origin = try values.decodeIfPresent(String.self, forKey: .origin)
         self.weight = try values.decode(Eight.self, forKey: .weight)
         self.height = try values.decode(Eight.self, forKey: .height)
-
-        if values.contains(.bredFor) {
-
-            self.bredFor = try values.decode(String.self, forKey: .bredFor)
-
-        } else {
-
-            self.bredFor = nil
-        }
-
-        if values.contains(.breedGroup) {
-
-            self.breedGroup = try values.decode(String.self, forKey: .breedGroup)
-
-        } else {
-
-            self.breedGroup = nil
-        }
-
-        if values.contains(.temperament) {
-
-            self.temperement = try values.decode(String.self, forKey: .temperament)
-
-        } else {
-
-            self.temperement = nil
-        }
-
-        if values.contains(.origin) {
-
-            self.origin = try values.decode(String.self, forKey: .origin)
-
-        } else {
-
-            self.origin = nil
-        }
-
-        if values.contains(.countryCode) {
-
-            self.countryCode = try values.decode(String.self, forKey: .countryCode)
-
-        } else {
-
-            self.countryCode = nil
-        }
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -104,7 +64,7 @@ struct Breed: Codable, Hashable, Identifiable {
         try container.encode(self.bredFor, forKey: .bredFor)
         try container.encode(self.breedGroup, forKey: .breedGroup)
         try container.encode(self.lifeSpan, forKey: .lifeSpan)
-        try container.encode(self.temperement, forKey: .temperament)
+        try container.encode(self.temperament, forKey: .temperament)
         try container.encode(self.referenceImageId, forKey: .referenceImageId)
         try container.encode(self.origin, forKey: .origin)
         try container.encode(self.countryCode, forKey: .countryCode)

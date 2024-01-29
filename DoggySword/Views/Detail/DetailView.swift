@@ -84,7 +84,7 @@ struct DetailView: View {
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity)
                             .padding(.horizontal, 16)
-                        Text(breed.temperement ?? "")
+                        Text(breed.temperament ?? "")
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity)
                             .padding(.horizontal, 16)
