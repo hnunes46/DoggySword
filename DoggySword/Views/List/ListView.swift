@@ -18,6 +18,7 @@ struct ListView: View {
     @State private var numberOfColumns = 2
     @State private var columnWidth = UIScreen.main.bounds.width - 16
     @State private var page: Int = 0
+    
     var body: some View {
 
         ScrollView {
@@ -74,7 +75,7 @@ struct ListView: View {
                 }
             }
         }
-        .onAppear {
+        .onLoad {
 
             self.fetch()
         }
@@ -87,6 +88,7 @@ struct ListView: View {
             do {
 
                 let queryItems = [
+                    URLQueryItem(name: "has_breeds", value: "true"),
                     URLQueryItem(name: "limit", value: "50"),
                     URLQueryItem(name: "include_breeds", value: "true"),
                     URLQueryItem(name: "page", value: "\(self.page)")

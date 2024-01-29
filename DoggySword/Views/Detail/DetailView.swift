@@ -36,41 +36,61 @@ struct DetailView: View {
 
                 ForEach (item.breeds) { breed in
 
-                    VStack(alignment:.leading) {
+                    VStack(alignment: .leading) {
 
                         Label("Breed name", systemImage: "pawprint")
                             .bold()
-                        Text(breed.name)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 16)
 
-                        Divider()
+                        Text(breed.name)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 16)
 
                         Label("Bred for", systemImage: "dog")
                             .bold()
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 16)
                         Text(breed.bredFor ?? "")
-
-                        Divider()
-
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 16)
 
                         Label("Breed group", systemImage: "square.grid.2x2")
                             .bold()
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 16)
                         Text(breed.breedGroup ?? "")
-
-                        Divider()
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 16)
 
                         Label("Life Span", systemImage: "staroflife.shield")
                             .bold()
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 16)
                         Text(breed.lifeSpan)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 16)
 
-                        Divider()
                         Label("Temperament", systemImage: "suit.heart.fill")
                             .bold()
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 16)
                         Text(breed.temperement ?? "")
-                            .multilineTextAlignment(.center)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 16)
                     }
-                    .padding(.horizontal, 18)
                 }
             }
-            .edgesIgnoringSafeArea(.top)
         }
         .navigationTitle("Dog")
     }
