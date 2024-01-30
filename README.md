@@ -1,5 +1,5 @@
 # DoggySword
-> iOS application to search images on Flicker for take home project.
+> iOS application to search Breeds on DogsAPI for take home project.
 
 [![Swift Version][swift-image]][swift-url]
 [![License][license-image]][license-url] 
