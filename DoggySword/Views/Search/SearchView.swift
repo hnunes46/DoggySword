@@ -19,6 +19,7 @@ struct SearchView: View {
     @State private var columnWidth = UIScreen.main.bounds.width - 16
     @State private var buttonGridLayout = "rectangle.grid.1x2"
     @State private var searchText = ""
+    @State private var isShowingAlertError = false
 
     var body: some View {
     
@@ -71,6 +72,14 @@ struct SearchView: View {
                 }
             }
         }
+        .alert("Error", isPresented: self.$isShowingAlertError, actions: {
+
+            Button("Ok", role: .cancel) { }
+
+        }, message: {
+
+            Text("Something went wrong!! 😱")
+        })
         .searchable(text: self.$searchText, prompt: "Search for breed")
         .onSubmit(of: .search, self.fetch)
     }
@@ -98,11 +107,9 @@ struct SearchView: View {
 
                     self.imageItems.append(dog)
                 }
-
-                print("DEBUG: \(self.imageItems.count)")
             } catch {
 
-                print("\(error.localizedDescription)")
+                self.isShowingAlertError.toggle()
             }
         }
     }

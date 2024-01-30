@@ -59,6 +59,7 @@ struct ListView: View {
 
     @State private var buttonGridLayout = "rectangle.grid.1x2"
     @State private var selectedSorting = ImageSorting.none
+    @State private var isShowingAlertError = false
 
     var body: some View {
 
@@ -136,6 +137,14 @@ struct ListView: View {
                 Text("Sort")
             }
         }
+        .alert("Error", isPresented: self.$isShowingAlertError, actions: {
+
+            Button("Ok", role: .cancel) { }
+
+        }, message: {
+
+            Text("Something went wrong!! 😱")
+        })
         .onLoad {
 
             self.fetch()
@@ -164,10 +173,9 @@ struct ListView: View {
                 }
                 self.imageItems.append(contentsOf: response)
 
-                print("DEBUG: \(self.imageItems.count)")
             } catch {
 
-                print("\(error.localizedDescription)")
+                self.isShowingAlertError.toggle()
             }
         }
     }
