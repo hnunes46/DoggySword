@@ -18,6 +18,9 @@ struct TabBar: View {
 
             SearchNavigationView()
                 .tabItem { Label("Search", systemImage: "magnifyingglass") }
+
+            LocalNavigationView()
+                .tabItem {Label("Local", systemImage: "square.and.arrow.down.on.square") }
         }
     }
 }

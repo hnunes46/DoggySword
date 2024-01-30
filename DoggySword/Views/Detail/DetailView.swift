@@ -9,8 +9,8 @@ import SwiftUI
 
 struct DetailView: View {
 
-    var item: Dog
-    
+    var item: ImageBreed
+
     var body: some View {
 
         ScrollView {
@@ -107,5 +107,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(item: Dog(id: "aaa", url: URL(string: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")!, width: 200, height: 300, breeds: []))
+    DetailView(item: ImageBreed(id: "aaa", url: URL(string: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")!, width: 200, height: 300, breeds: []))
 }

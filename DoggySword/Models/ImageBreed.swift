@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Dog: Codable, Hashable, Identifiable {
+struct ImageBreed: Codable, Hashable, Identifiable {
 
     let id: String
     let url: URL?

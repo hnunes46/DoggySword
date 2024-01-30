@@ -1,15 +1,13 @@
 //
-//  SearchView.swift
+//  LocalView.swift
 //  DoggySword
 //
-//  Created by Helder Nunes on 26/01/2024.
+//  Created by Helder Nunes on 30/01/2024.
 //
 
 import SwiftUI
 
-struct SearchView: View {
-
-    let httpManager: HttpManager = HttpManager()
+struct LocalView: View {
 
     @Binding var path: NavigationPath
 
@@ -18,17 +16,18 @@ struct SearchView: View {
     @State private var numberOfColumns = 1
     @State private var columnWidth = UIScreen.main.bounds.width - 16
     @State private var buttonGridLayout = "rectangle.grid.1x2"
-    @State private var searchText = ""
+
     @State private var isShowingAlertError = false
+    @State private var alerMessage: ErrorMessage = .localSave
 
     var body: some View {
-    
+
         ScrollView {
             LazyVGrid(columns: self.columns, spacing: 4) {
 
                 ForEach (self.imageItems) { item in
 
-                    NavigationLink(value: SearchNavigationRoutes.detail(item: item)) {
+                    NavigationLink(value: LocalNavigationRoutes.detail(item: item)) {
 
                         ZStack {
 
@@ -53,27 +52,19 @@ struct SearchView: View {
 
                                 Spacer()
 
-                                VStack (alignment: .leading) {
+                                VStack {
 
                                     Text(item.breeds.first?.name ?? "N/A")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .font(.headline)
-                                        .padding(.horizontal, 8)
-                                    Text(item.breeds.first?.breedGroup ?? "N/A")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .font(.caption)
-                                        .padding(.horizontal, 8)
-                                    Text(item.breeds.first?.origin ?? "N/A")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .font(.caption2)
-                                        .padding(.horizontal, 8)
+                                        .padding()
                                 }
                                 .frame(height: 150)
                                 .frame(maxWidth: .infinity)
                                 .background(Gradient(colors: [Color.black.opacity(0.0), Color.black.opacity(0.9)]))
+                                .font(.title)
                                 .bold()
                                 .foregroundStyle(.white)
                             }
+
                         }
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                     }
@@ -82,7 +73,7 @@ struct SearchView: View {
             .padding(.horizontal, 8)
 
         }
-        .toolbar {
+        .toolbar{
 
             Button("", systemImage: self.buttonGridLayout) {
 
@@ -101,6 +92,7 @@ struct SearchView: View {
                     self.buttonGridLayout = "square.grid.2x2"
                 }
             }
+
         }
         .alert("Error", isPresented: self.$isShowingAlertError, actions: {
 
@@ -108,43 +100,34 @@ struct SearchView: View {
 
         }, message: {
 
-            Text("Something went wrong!! 😱")
+            Text(self.alerMessage.rawValue)
         })
-        .searchable(text: self.$searchText, prompt: "Search for breed")
-        .onSubmit(of: .search, self.fetch)
+        .onLoad {
+
+            self.fetch()
+        }
     }
 
     private func fetch() {
 
-        Task {
+        guard let data = UserDefaults.standard.data(forKey: "images") else { return }
 
-            do {
+        do {
 
-                self.imageItems = []
+            let decoder = JSONDecoder()
 
+            let images: [ImageBreed] = try decoder.decode([ImageBreed].self, from: data)
 
-                let queryItems = [
-                    URLQueryItem(name: "q", value: self.searchText),
-                ]
+            self.imageItems = images
 
-                let breeds: [Breed] = try await self.httpManager.request(Resource(url: Routes.breeds, method: .get(queryItems)))
-
-                for breed in breeds {
-
-                    guard let referenceImageId = breed.referenceImageId else { throw NetworkError.badURL }
-
-                    let image: ImageBreed = try await self.httpManager.request(Resource(url: Routes.image.appending(path: referenceImageId)))
-
-                    self.imageItems.append(image)
-                }
-            } catch {
-
-                self.isShowingAlertError.toggle()
-            }
+        } catch {
+            
+            self.alerMessage = .localSave
+            self.isShowingAlertError.toggle()
         }
     }
 }
 
 #Preview {
-    SearchView(path: .constant(NavigationPath()))
+    LocalView(path: .constant(NavigationPath()))
 }

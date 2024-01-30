@@ -9,7 +9,7 @@ import SwiftUI
 
 enum SearchNavigationRoutes: Hashable {
 
-    case detail(item: Dog)
+    case detail(item: ImageBreed)
 }
 
 struct SearchNavigationView: View {

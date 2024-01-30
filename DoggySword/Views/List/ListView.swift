@@ -7,51 +7,13 @@
 
 import SwiftUI
 
-enum ImageSorting: String, CaseIterable, Identifiable {
-    
-    case none
-    case ascending
-    case descending
-    var id: Self { return self }
-
-    var title: String {
-
-        switch self {
-            
-        case .none:
-                return "No order"
-        
-        case .ascending:
-                return "Ascending"
-
-        case .descending:
-               return "Descending"
-        }
-    }
-
-    var value: String {
-
-        switch self {
-
-        case .none:
-                return "RAND"
-
-        case .ascending:
-                return "ASC"
-
-        case .descending:
-               return "DESC"
-        }
-    }
-}
-
 struct ListView: View {
 
     let httpManager: HttpManager = HttpManager()
 
     @Binding var path: NavigationPath
 
-    @State private var imageItems: [Dog] = [Dog]()
+    @State private var imageItems: [ImageBreed] = [ImageBreed]()
     @State private var columns: [GridItem] = [GridItem(.fixed(UIScreen.main.bounds.width - 16))]
     @State private var numberOfColumns = 1
     @State private var columnWidth = UIScreen.main.bounds.width - 16
@@ -60,6 +22,7 @@ struct ListView: View {
     @State private var buttonGridLayout = "rectangle.grid.1x2"
     @State private var selectedSorting = ImageSorting.none
     @State private var isShowingAlertError = false
+    @State private var alerMessage: ErrorMessage = .network
 
     var body: some View {
 
@@ -91,6 +54,24 @@ struct ListView: View {
 
                             VStack {
                                 
+                                VStack(alignment: .trailing) {
+                                    
+                                    Button {
+
+                                        self.saveToLocal(with: item)
+
+                                    } label: {
+
+                                        Image(systemName: "square.and.arrow.down.on.square")
+                                            .foregroundStyle(.white)
+                                            .symbolRenderingMode(.hierarchical)
+                                            .font(.system(size: 24))
+                                    }
+                                    .padding()
+                                }
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .background(Gradient(colors: [Color.black.opacity(0.9), Color.black.opacity(0.0)]))
+
                                 Spacer()
 
                                 VStack {
@@ -118,7 +99,6 @@ struct ListView: View {
             .padding(.horizontal, 8)
 
         }
-        .navigationTitle("Explorer")
         .toolbar{
 
             Button("", systemImage: self.buttonGridLayout) {
@@ -165,7 +145,7 @@ struct ListView: View {
 
         }, message: {
 
-            Text("Something went wrong!! 😱")
+            Text(self.alerMessage.rawValue)
         })
         .onLoad {
 
@@ -187,7 +167,7 @@ struct ListView: View {
                     URLQueryItem(name: "order", value: self.selectedSorting.value)
                 ]
 
-                let response: [Dog] = try await self.httpManager.request(Resource(url: Routes.search, method: .get(queryItems)))
+                let response: [ImageBreed] = try await self.httpManager.request(Resource(url: Routes.search, method: .get(queryItems)))
 
                 if self.page == 0 {
 
@@ -197,16 +177,66 @@ struct ListView: View {
 
             } catch {
 
+                self.alerMessage = .network
                 self.isShowingAlertError.toggle()
             }
         }
     }
 
-    private func isLastElement(item: Dog) {
+    private func isLastElement(item: ImageBreed) {
 
         if imageItems[self.imageItems.count - 15].id == item.id {
             self.page = page + 1
             self.fetch()
+        }
+    }
+
+    private func saveToLocal(with image: ImageBreed) {
+
+        let encoder = JSONEncoder()
+
+        if let data = UserDefaults.standard.data(forKey: "images") {
+
+            do {
+
+                let decoder = JSONDecoder()
+
+                var images: [ImageBreed] = try decoder.decode([ImageBreed].self, from: data)
+
+                if images.contains(where: { $0.id == image.id }) {
+
+                    self.alerMessage = .duplicatedItem
+                    self.isShowingAlertError.toggle()
+                    return
+                }
+
+                images.append(image)
+
+
+
+                let newData = try encoder.encode(images)
+
+                UserDefaults.standard.set(newData, forKey: "images")
+
+            } catch {
+
+                self.alerMessage = .localSave
+                self.isShowingAlertError.toggle()
+            }
+
+        } else {
+
+            do {
+                
+                let newData = try encoder.encode([image])
+                UserDefaults.standard.set(newData, forKey: "images")
+
+            } catch {
+
+                self.alerMessage = .localSave
+                self.isShowingAlertError.toggle()
+            }
+
         }
     }
 }

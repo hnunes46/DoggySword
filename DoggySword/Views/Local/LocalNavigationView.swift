@@ -1,28 +1,28 @@
 //
-//  ListNavigationView.swift
+//  LocalNavigationView.swift
 //  DoggySword
 //
-//  Created by Helder Nunes on 29/01/2024.
+//  Created by Helder Nunes on 30/01/2024.
 //
 
 import SwiftUI
 
-enum ListNavigationRoutes: Hashable {
+enum LocalNavigationRoutes: Hashable {
 
     case detail(item: ImageBreed)
 }
 
-struct ListNavigationView: View {
-
+struct LocalNavigationView: View {
+    
     @State private var path: NavigationPath = .init()
 
     var body: some View {
-
+    
         NavigationStack(path: self.$path) {
-            
-            ListView(path: self.$path)
-                .navigationTitle("Explorer")
-                .navigationDestination(for: ListNavigationRoutes.self) { route in
+
+            LocalView(path: self.$path)
+                .navigationTitle("Local")
+                .navigationDestination(for: LocalNavigationRoutes.self) { route in
 
                     switch route {
 
@@ -35,5 +35,5 @@ struct ListNavigationView: View {
 }
 
 #Preview {
-    ListNavigationView()
+    LocalNavigationView()
 }
