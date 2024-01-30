@@ -106,7 +106,6 @@ struct ListView: View {
                                 .foregroundStyle(.white)
                             }
 
-
                         }
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .task {
