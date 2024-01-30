@@ -70,21 +70,44 @@ struct ListView: View {
 
                     NavigationLink(value: ListNavigationRoutes.detail(item: item)) {
 
-                        AsyncImage(url: item.url) { image in
+                        ZStack {
 
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: self.columnWidth, height: 300)
-                                .clipped()
+                            AsyncImage(url: item.url) { image in
 
-                        } placeholder: {
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: self.columnWidth, height: 300)
+                                    .clipped()
 
-                            Rectangle()
-                                .foregroundColor(.gray)
+                            } placeholder: {
+
+                                Rectangle()
+                                    .foregroundColor(.gray)
+
+                            }
+                            .frame(height: 300)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                            VStack {
+                                
+                                Spacer()
+
+                                VStack {
+                                    
+                                    Text(item.breeds.first?.name ?? "N/A")
+                                        .padding()
+                                }
+                                .frame(height: 150)
+                                .frame(maxWidth: .infinity)
+                                .background(Gradient(colors: [Color.black.opacity(0.0), Color.black.opacity(0.9)]))
+                                .font(.title)
+                                .bold()
+                                .foregroundStyle(.white)
+                            }
+
 
                         }
-                        .frame(height: 300)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .task {
 
