@@ -50,6 +50,24 @@ struct LocalView: View {
 
                             VStack {
 
+                                VStack(alignment: .trailing) {
+
+                                    Button {
+
+                                        self.remove(image: item)
+
+                                    } label: {
+
+                                        Image(systemName: "trash")
+                                            .foregroundStyle(.white)
+                                            .symbolRenderingMode(.hierarchical)
+                                            .font(.system(size: 24))
+                                    }
+                                    .padding()
+                                }
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .background(Gradient(colors: [Color.black.opacity(0.9), Color.black.opacity(0.0)]))
+
                                 Spacer()
 
                                 VStack {
@@ -102,7 +120,7 @@ struct LocalView: View {
 
             Text(self.alerMessage.rawValue)
         })
-        .onLoad {
+        .onAppear {
 
             self.fetch()
         }
@@ -123,6 +141,24 @@ struct LocalView: View {
         } catch {
             
             self.alerMessage = .localSave
+            self.isShowingAlertError.toggle()
+        }
+    }
+
+    private func remove(image: ImageBreed) {
+
+        do {
+
+            self.imageItems.removeAll { $0.id == image.id }
+
+            let encoder = JSONEncoder()
+
+            let data = try encoder.encode(self.imageItems)
+
+            UserDefaults.standard.set(data, forKey: "images")
+        } catch {
+
+            self.alerMessage = .localDelete
             self.isShowingAlertError.toggle()
         }
     }

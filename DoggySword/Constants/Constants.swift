@@ -49,5 +49,6 @@ enum ErrorMessage: String {
 
     case network = "Something went wrong!! 😱"
     case localSave = "Something went wrong saving to local storage!! 😱"
+    case localDelete = "Something went wrong deleting from local storage!! 😱"
     case duplicatedItem = "You already save tha image"
 }
