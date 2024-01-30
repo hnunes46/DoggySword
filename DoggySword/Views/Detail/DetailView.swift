@@ -36,7 +36,7 @@ struct DetailView: View {
 
                 ForEach (item.breeds) { breed in
 
-                    VStack(alignment: .leading) {
+                    VStack {
 
                         Label("Breed name", systemImage: "pawprint")
                             .bold()
@@ -96,9 +96,9 @@ struct DetailView: View {
                             .padding(.horizontal, 16)
                         Text(breed.temperament ?? "")
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .frame(maxWidth: .infinity)
                             .padding(.horizontal, 16)
                     }
+                    .padding(.horizontal, 16)
                 }
             }
         }
