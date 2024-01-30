@@ -1,5 +1,5 @@
 //
-//  ListNavigationView.swift
+//  SearchNavigationView.swift
 //  DoggySword
 //
 //  Created by Helder Nunes on 29/01/2024.
@@ -7,26 +7,26 @@
 
 import SwiftUI
 
-enum ListNavigationRoutes: Hashable {
+enum SearchNavigationRoutes: Hashable {
 
     case detail(item: Dog)
 }
 
-struct ListNavigationView: View {
+struct SearchNavigationView: View {
 
     @State private var path: NavigationPath = .init()
 
     var body: some View {
 
         NavigationStack(path: self.$path) {
-            
-            ListView(path: self.$path)
-                .navigationTitle("Explorer")
-                .navigationDestination(for: ListNavigationRoutes.self) { route in
+
+            SearchView(path: self.$path)
+                .navigationTitle("Search")
+                .navigationDestination(for: SearchNavigationRoutes.self) { route in
 
                     switch route {
 
-                    case let .detail(item):
+                    case let .detail(item: item):
                         DetailView(item: item)
                     }
                 }
@@ -35,5 +35,5 @@ struct ListNavigationView: View {
 }
 
 #Preview {
-    ListNavigationView()
+    SearchNavigationView()
 }

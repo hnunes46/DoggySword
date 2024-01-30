@@ -79,6 +79,16 @@ struct DetailView: View {
                             .frame(maxWidth: .infinity)
                             .padding(.horizontal, 16)
 
+                        Label("Origin", systemImage: "globe")
+                            .bold()
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 16)
+                        Text(breed.origin ?? "")
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 16)
+
                         Label("Temperament", systemImage: "suit.heart.fill")
                             .bold()
                             .multilineTextAlignment(.leading)

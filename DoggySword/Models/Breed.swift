@@ -40,19 +40,19 @@ struct Breed: Codable, Hashable, Identifiable {
 
     init(from decoder: Decoder) throws {
 
-        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        self.id = try values.decode(Int.self, forKey: .id)
-        self.name = try values.decode(String.self, forKey: .name)
-        self.lifeSpan = try values.decode(String.self, forKey: .lifeSpan)
-        self.referenceImageId = try values.decodeIfPresent(String.self, forKey: .referenceImageId)
-        self.breedGroup = try values.decodeIfPresent(String.self, forKey: .breedGroup)
-        self.bredFor = try values.decodeIfPresent(String.self, forKey: .bredFor)
-        self.temperament = try values.decodeIfPresent(String.self, forKey: .temperament)
-        self.countryCode = try values.decodeIfPresent(String.self, forKey: .countryCode)
-        self.origin = try values.decodeIfPresent(String.self, forKey: .origin)
-        self.weight = try values.decode(Eight.self, forKey: .weight)
-        self.height = try values.decode(Eight.self, forKey: .height)
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.lifeSpan = try container.decode(String.self, forKey: .lifeSpan)
+        self.referenceImageId = try container.decodeIfPresent(String.self, forKey: .referenceImageId)
+        self.breedGroup = try container.decodeIfPresent(String.self, forKey: .breedGroup)
+        self.bredFor = try container.decodeIfPresent(String.self, forKey: .bredFor)
+        self.temperament = try container.decodeIfPresent(String.self, forKey: .temperament)
+        self.countryCode = try container.decodeIfPresent(String.self, forKey: .countryCode)
+        self.origin = try container.decodeIfPresent(String.self, forKey: .origin)
+        self.weight = try container.decode(Eight.self, forKey: .weight)
+        self.height = try container.decode(Eight.self, forKey: .height)
     }
 
     public func encode(to encoder: Encoder) throws {

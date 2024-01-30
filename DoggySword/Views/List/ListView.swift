@@ -63,8 +63,6 @@ struct ListView: View {
     var body: some View {
 
         ScrollView {
-
-            //                DynamicGrid(gridItems: self.gridItems, numOfColumns: 2, spacing: 4)
             LazyVGrid(columns: self.columns, spacing: 4) {
 
                 ForEach (self.imageItems) { item in
